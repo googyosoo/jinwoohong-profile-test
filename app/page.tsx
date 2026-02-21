@@ -4,7 +4,7 @@ export default function Home() {
   const profile = {
     name: "홍진우",
     enName: "HONG JINWOO",
-    job: "초등학교 교사 (정보 업무 담당) / 개발자",
+    job: "고등학교 교사(영어)",
     age: 45,
     favorites: "따뜻한 국물의 음식 및 음료",
     contact: "010-5019-0758",
