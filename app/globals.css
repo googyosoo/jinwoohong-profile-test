@@ -1,26 +1,100 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-cyber-black: #050505;
+  --color-cyber-dark: #0d0d0d;
+  --color-cyber-pink: #ff00ff;
+  --color-cyber-cyan: #00ffff;
+  --color-cyber-yellow: #f0f600;
+  --color-cyber-blue: #0000ff;
+  
+  --font-cyber: 'Inter', system-ui, sans-serif;
+  
+  --animate-glitch: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+  --animate-scanline: scanline 8s linear infinite;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+  }
+
+  @keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+:root {
+  --background: #050505;
+  --foreground: #00ffff;
 }
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-cyber);
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 255, 255, 0.1);
+  z-index: 9999;
+  pointer-events: none;
+  animation: scanline 8s linear infinite;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.1) 50%
+  ),
+  linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 4px, 3px 100%;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+.neon-border {
+  border: 1px solid var(--color-cyber-cyan);
+  box-shadow: 0 0 10px var(--color-cyber-cyan), inset 0 0 5px var(--color-cyber-cyan);
+}
+
+.neon-text-pink {
+  color: var(--color-cyber-pink);
+  text-shadow: 0 0 5px var(--color-cyber-pink), 0 0 10px var(--color-cyber-pink);
+}
+
+.neon-text-cyan {
+  color: var(--color-cyber-cyan);
+  text-shadow: 0 0 5px var(--color-cyber-cyan), 0 0 10px var(--color-cyber-cyan);
+}
+
+.cyber-panel {
+  background: rgba(13, 13, 13, 0.8);
+  backdrop-filter: blur(10px);
+  border-left: 4px solid var(--color-cyber-pink);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+}
+
