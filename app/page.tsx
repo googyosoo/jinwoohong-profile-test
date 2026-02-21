@@ -5,7 +5,7 @@ export default function Home() {
     name: "홍진우",
     enName: "HONG JINWOO",
     job: "고등학교 교사(영어)",
-    age: 45,
+    career: "17년",
     favorites: "따뜻한 국물의 음식 및 음료",
     contact: "010-5019-0758",
     email: "kiparang999@gmail.com",
@@ -61,8 +61,8 @@ export default function Home() {
                   <p className="font-bold">{profile.name}</p>
                 </div>
                 <div className="space-y-1">
-                  <span className="text-xs text-cyber-cyan block uppercase opacity-70">Age</span>
-                  <p className="font-bold">만 {profile.age}세 (Standard Earth Years)</p>
+                  <span className="text-xs text-cyber-cyan block uppercase opacity-70">Teaching Career</span>
+                  <p className="font-bold">교직경력: {profile.career}</p>
                 </div>
               </div>
             </section>
